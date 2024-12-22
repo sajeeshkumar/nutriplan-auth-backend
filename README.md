@@ -1,6 +1,6 @@
 # Golang Web API
 
-This is a simple Golang web API that demonstrates how to build and deploy a Go application. It listens on a configurable port and responds with a basic message. This application is intended to be deployed on platforms like Render, but it can be used locally for development and testing.
+This is a simple Golang web API that has a login API. The login API is very frugal and authenticates from a list of username and passwords passed in via environment variables. It listens on a configurable port and responds with a basic message. This application is intended to be deployed on platforms like Render, but it can be used locally for development and testing.
 
 ## Table of Contents
 - [Installation](#installation)
