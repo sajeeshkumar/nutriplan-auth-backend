@@ -9,7 +9,6 @@
 
 # Ignore Go module files (if you are not committed to them)
 go.sum
-go.mod
 
 # Dependencies
 /vendor/
