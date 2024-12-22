@@ -5,10 +5,7 @@ This is a simple Golang web API that demonstrates how to build and deploy a Go a
 ## Table of Contents
 - [Installation](#installation)
 - [Running Locally](#running-locally)
-- [Deploying to Render](#deploying-to-render)
-- [Environment Variables](#environment-variables)
-- [Docker Setup (Optional)](#docker-setup-optional)
-- [License](#license)
+
 
 ## Installation
 
