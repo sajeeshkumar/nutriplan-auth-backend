@@ -1,0 +1,24 @@
+# Golang
+# Ignore Go binary files
+/bin/
+/obj/
+/*.exe
+/*.exe~
+/*.out
+/*.test
+
+# Ignore Go module files (if you are not committed to them)
+go.sum
+go.mod
+
+# Dependencies
+/vendor/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment files
+.env  # <-- Added to ignore .env files
