@@ -54,8 +54,6 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Printf("Received credentials: Username=%s, Password=%s\n", creds.Username, creds.Password)
-
 	if password, exists := users[creds.Username]; exists {
 		if password == creds.Password {
 			w.WriteHeader(http.StatusOK)
