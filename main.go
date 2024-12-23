@@ -9,6 +9,8 @@ import (
 	"strings"
 
 	"github.com/joho/godotenv"
+	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 var users map[string]string
@@ -71,7 +73,30 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	loadUsers()
-	http.HandleFunc("/login", authenticate)
-	fmt.Println("Starting server on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	router := mux.NewRouter()
+
+	// Your routes
+	router.HandleFunc("/login", authenticate).Methods(http.MethodPost)
+
+	// CORS setup
+	c := cors.New(cors.Options{
+        AllowedOrigins: []string{
+            "http://localhost:3000",      // Local development
+            "https://nutriplan-frontend.onrender.com", // Render deployment
+        },
+        AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+        AllowedHeaders:   []string{"Content-Type", "Authorization", "Referrer-Policy"},
+        AllowCredentials: true, // If you use cookies or Authorization headers
+    })
+
+	// Wrap your router with CORS middleware
+	handler := c.Handler(router)
+
+	// Start server
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	log.Printf("Server running on port %s", port)
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
